@@ -23,7 +23,7 @@ export default function ParticleCanvas() {
     if (!ctx) return
 
     let W: number, H: number
-    let particles: Particle[] = []
+    let particles: ParticleClass[] = []
     let animFrame: number
     const MAX = window.innerWidth < 768 ? 35 : 70
     const CONNECTION_DIST = 120
@@ -64,6 +64,7 @@ export default function ParticleCanvas() {
       }
 
       draw() {
+        if (!ctx) return
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2)
         ctx.fillStyle = this.color
@@ -81,6 +82,7 @@ export default function ParticleCanvas() {
     }
 
     const drawConnections = () => {
+      if (!ctx) return
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x
@@ -99,6 +101,7 @@ export default function ParticleCanvas() {
     }
 
     const animate = () => {
+      if (!ctx) return
       ctx.clearRect(0, 0, W, H)
       drawConnections()
       particles.forEach((p) => {

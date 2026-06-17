@@ -24,7 +24,7 @@ export default function Loader({ isLoading }: LoaderProps) {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="font-display text-[clamp(3rem,8vw,5.5rem)] font-light tracking-[0.25em] text-gold"
             >
-              A.K
+              ANURAG
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}

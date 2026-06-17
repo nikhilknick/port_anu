@@ -63,7 +63,7 @@ export default function Contact() {
                 </div>
                 <div className="flex flex-col gap-[3px]">
                   <strong className="text-[0.82rem] tracking-[0.08em] uppercase text-text-primary">Email</strong>
-                  <span className="text-[0.88rem] text-text-secondary">luckybishtinteriors@gmail.com</span>
+                  <span className="text-[0.88rem] text-text-secondary">anurag@gmail.com</span>
                 </div>
               </div>
 
@@ -88,7 +88,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -173,7 +173,7 @@ export default function Contact() {
                 </div>
               )}
             </form>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>
