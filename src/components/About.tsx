@@ -90,7 +90,7 @@ export default function About() {
                 Start a Conversation
               </button>
               <a
-                href="/Anurag Resume.pdf"
+                href="/ANURAG RESUME.pdf"
                 download
                 className="inline-flex items-center gap-[10px] px-[30px] py-[14px] rounded-full text-[0.82rem] font-medium tracking-[0.1em] uppercase transition-elegant bg-transparent border border-[rgba(201,169,110,0.4)] text-gold hover:bg-[rgba(201,169,110,0.08)] hover:border-gold"
               >
