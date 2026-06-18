@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
 const projects = [
@@ -59,9 +59,22 @@ const filters = ['all', 'commercial', 'plan and elevations', '3d']
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all')
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
 
   const filteredProjects =
     activeFilter === 'all' ? projects : projects.filter((p) => p.category === activeFilter)
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [selectedProject])
 
   const handleFilterClick = (filter: string) => {
     setActiveFilter(filter)
@@ -125,7 +138,8 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.97 }}
               transition={{ delay: index * 0.1, duration: 0.35 }}
-              className={`project-card bg-bg-card border border-[rgba(201,169,110,0.15)] rounded-lg overflow-hidden transition-elegant hover:border-[rgba(201,169,110,0.4)] hover:-translate-y-[6px] hover:shadow-hover ${
+              onClick={() => setSelectedProject(project)}
+              className={`project-card bg-bg-card border border-[rgba(201,169,110,0.15)] rounded-lg overflow-hidden transition-elegant hover:border-[rgba(201,169,110,0.4)] hover:-translate-y-[6px] hover:shadow-hover cursor-pointer ${
                 activeFilter === 'all' ? 'lg:col-span-2' : ''
               }`}
             >
@@ -168,6 +182,112 @@ export default function Projects() {
             </motion.div>
           ))}
         </div>
+
+        {/* Project Details Modal */}
+        <AnimatePresence>
+          {selectedProject && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-[rgba(19,15,10,0.92)] backdrop-blur-md z-50 flex items-center justify-center p-4"
+              onClick={() => setSelectedProject(null)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                onClick={(e) => e.stopPropagation()}
+                className="bg-bg-card border border-[rgba(201,169,110,0.25)] rounded-lg max-w-[900px] w-full max-h-[85vh] overflow-y-auto relative"
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-[rgba(19,15,10,0.7)] border border-[rgba(201,169,110,0.15)] rounded-full text-gold hover:bg-[rgba(201,169,110,0.1)] hover:border-gold transition-elegant z-10"
+                  aria-label="Close modal"
+                >
+                  <i className="fas fa-times text-lg" />
+                </button>
+
+                {/* Modal Content */}
+                <div className="p-8 md:p-10">
+                  {/* Category Badge */}
+                  <span className="inline-block bg-[rgba(201,169,110,0.08)] border border-[rgba(201,169,110,0.15)] px-4 py-2 rounded-full text-[0.7rem] tracking-[0.12em] uppercase text-gold mb-6">
+                    {selectedProject.category}
+                  </span>
+
+                  {/* Title */}
+                  <h3 className="font-display text-[clamp(1.8rem,4vw,2.5rem)] font-normal text-text-primary mb-4">
+                    {selectedProject.title}
+                  </h3>
+
+                  {/* Plan Count */}
+                  <div className="flex items-center gap-2 mb-6 text-text-secondary">
+                    <i className="fas fa-layer-group text-gold" />
+                    <span className="text-[0.88rem] tracking-[0.05em]">{selectedProject.planCount} Plans Included</span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-[0.95rem] text-text-secondary leading-[1.85] mb-8">
+                    {selectedProject.description}
+                  </p>
+
+                  {/* Project Image */}
+                  <div className="mb-8 rounded-lg overflow-hidden border border-[rgba(201,169,110,0.15)]">
+                    <div
+                      className="w-full h-[400px] bg-cover bg-center"
+                      style={{
+                        backgroundImage: `linear-gradient(135deg, #3a2e1e 0%, #6b5035 40%, #a07850 100%)`,
+                      }}
+                    />
+                  </div>
+
+                  {/* Tags */}
+                  <div className="mb-8">
+                    <h4 className="text-[0.72rem] tracking-[0.28em] uppercase text-gold mb-4">Included Plans</h4>
+                    <div className="flex gap-2 flex-wrap">
+                      {selectedProject.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-4 py-2 bg-bg-dark border border-[rgba(201,169,110,0.15)] rounded-full text-[0.75rem] tracking-[0.08em] uppercase text-text-muted hover:border-gold hover:text-gold transition-elegant"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Call to Action */}
+                  <div className="pt-6 border-t border-[rgba(201,169,110,0.15)] flex gap-4 flex-wrap">
+                    <button
+                      onClick={() => {
+                        setSelectedProject(null)
+                        const contactSection = document.querySelector('#contact')
+                        if (contactSection) {
+                          const navHeight = 80
+                          const targetPosition = contactSection.getBoundingClientRect().top + window.scrollY - navHeight
+                          window.scrollTo({ top: targetPosition, behavior: 'smooth' })
+                        }
+                      }}
+                      className="inline-flex items-center gap-[10px] px-[30px] py-[14px] rounded-full text-[0.82rem] font-medium tracking-[0.1em] uppercase transition-elegant bg-gradient-primary text-charcoal shadow-[0_4px_20px_rgba(201,169,110,0.3)] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(201,169,110,0.5)]"
+                    >
+                      <i className="fas fa-feather-alt" />
+                      Discuss Your Project
+                    </button>
+                    <button
+                      onClick={() => setSelectedProject(null)}
+                      className="inline-flex items-center gap-[10px] px-[30px] py-[14px] rounded-full text-[0.82rem] font-medium tracking-[0.1em] uppercase transition-elegant bg-transparent border border-[rgba(201,169,110,0.4)] text-gold hover:bg-[rgba(201,169,110,0.08)] hover:border-gold"
+                    >
+                      <i className="fas fa-arrow-left" />
+                      Back to Projects
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   )
