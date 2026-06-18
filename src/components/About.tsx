@@ -43,7 +43,7 @@ export default function About() {
               <div className="absolute top-[-40px] right-[-40px] w-[200px] h-[200px] rounded-full bg-[radial-gradient(circle,rgba(201,169,110,0.12),transparent_70%)]" />
               <div className="absolute bottom-[-30px] left-[-30px] w-[160px] h-[160px] bg-gradient-to-br from-[rgba(196,113,74,0.1)] to-transparent rounded-full" />
               <div className="font-display text-[5rem] font-light tracking-[0.2em] text-[rgba(201,169,110,0.25)] relative z-[1]">
-                A.K
+                A
               </div>
             </div>
           </motion.div>

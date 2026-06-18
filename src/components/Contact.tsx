@@ -63,7 +63,7 @@ export default function Contact() {
                 </div>
                 <div className="flex flex-col gap-[3px]">
                   <strong className="text-[0.82rem] tracking-[0.08em] uppercase text-text-primary">Email</strong>
-                  <span className="text-[0.88rem] text-text-secondary">anurag@gmail.com</span>
+                  <span className="text-[0.88rem] text-text-secondary">anuragkholiwal@gmail.com</span>
                 </div>
               </div>
 
@@ -73,19 +73,19 @@ export default function Contact() {
                 </div>
                 <div className="flex flex-col gap-[3px]">
                   <strong className="text-[0.82rem] tracking-[0.08em] uppercase text-text-primary">Phone</strong>
-                  <span className="text-[0.88rem] text-text-secondary">+91 8527536019</span>
+                  <span className="text-[0.88rem] text-text-secondary">+91 9821493106</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex gap-3">
+            {/* <div className="flex gap-3">
               <a
                 href="#"
                 className="w-10 h-10 border border-[rgba(201,169,110,0.15)] rounded-full flex items-center justify-center text-text-muted text-[0.9rem] transition-elegant hover:border-gold hover:text-gold hover:bg-[rgba(201,169,110,0.08)]"
               >
                 <i className="fab fa-linkedin-in" />
               </a>
-            </div>
+            </div> */}
           </motion.div>
 
           {/* <motion.div
