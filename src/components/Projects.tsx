@@ -14,6 +14,7 @@ const projects = [
     image: '/project1.jpg',
     tags: ['Grid Plan', 'Architecture', 'Furniture', 'Ledger'],
     planCount: 4,
+    files: ['/OFFICE BUBBLE.pdf', '/OFFICE GRID PLAN-Model.pdf'],
   },
   {
     id: 'hotel',
@@ -24,6 +25,7 @@ const projects = [
     image: '/project5.jpg',
     tags: ['Hotel Grid Plan', 'Hotel Bubble Diagram', 'Hotel Furniture Plan'],
     planCount: 3,
+    files: [],
   },
   {
     id: 'kitchen',
@@ -42,6 +44,7 @@ const projects = [
       'Plan and Elevation',
     ],
     planCount: 11,
+    files: [],
   },
   {
     id: '3d',
@@ -52,6 +55,7 @@ const projects = [
     image: '/project15.jpg',
     tags: ['Brainstorming Room', 'Owner Room', 'Conference Room'],
     planCount: 3,
+    files: [],
   },
 ]
 
@@ -233,15 +237,33 @@ export default function Projects() {
                     {selectedProject.description}
                   </p>
 
+                  {/* Project Files/PDFs */}
+                  {selectedProject.files && selectedProject.files.length > 0 && (
+                    <div className="mb-8">
+                      <h4 className="text-[0.72rem] tracking-[0.28em] uppercase text-gold mb-4">Project Files</h4>
+                      {selectedProject.files.map((file, index) => (
+                        <div key={index} className="mb-6 rounded-lg overflow-hidden border border-[rgba(201,169,110,0.15)]">
+                          <iframe
+                            src={file}
+                            className="w-full h-[600px]"
+                            title={`Project file ${index + 1}`}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
                   {/* Project Image */}
-                  <div className="mb-8 rounded-lg overflow-hidden border border-[rgba(201,169,110,0.15)]">
-                    <div
-                      className="w-full h-[400px] bg-cover bg-center"
-                      style={{
-                        backgroundImage: `linear-gradient(135deg, #3a2e1e 0%, #6b5035 40%, #a07850 100%)`,
-                      }}
-                    />
-                  </div>
+                  {(!selectedProject.files || selectedProject.files.length === 0) && (
+                    <div className="mb-8 rounded-lg overflow-hidden border border-[rgba(201,169,110,0.15)]">
+                      <div
+                        className="w-full h-[400px] bg-cover bg-center"
+                        style={{
+                          backgroundImage: `linear-gradient(135deg, #3a2e1e 0%, #6b5035 40%, #a07850 100%)`,
+                        }}
+                      />
+                    </div>
+                  )}
 
                   {/* Tags */}
                   <div className="mb-8">
