@@ -11,7 +11,7 @@ const projects = [
     title: 'Office Plans',
     description:
       'A complete set of office plans — structural grid layout with solar & daylight analysis, plus a full architectural layout with workstations, meeting rooms, brainstorming zones, sleeping pods, and support facilities.',
-    image: '/project1.jpg',
+    image: '',
     tags: ['Grid Plan', 'Architecture', 'Furniture', 'Ledger', 'Mood Board'],
     planCount: 6,
     files: [
@@ -29,7 +29,7 @@ const projects = [
     title: 'Hotel Plans',
     description:
       'The proposed hotel site plan is designed as a premium hospitality and event destination with efficient space planning and smooth circulation. The layout includes well-organized banquet lawns, hotel blocks, recreational amenities, landscaped open spaces, and dedicated parking areas.',
-    image: '/project5.jpg',
+    image: '',
     tags: ['Hotel Grid Plan', 'Hotel Layout Plan', 'Hotel Complete Plan'],
     planCount: 3,
     files: ['/HOTEL GRID.pdf', '/HOTEL LAYOUT PLAN.pdf', '/HOTEL COMPLETE PLAN.pdf'],
@@ -40,7 +40,7 @@ const projects = [
     title: 'Kitchen Plans',
     description:
       'A comprehensive kitchen design set covering layout, cabinetry, elevation, and 3D plans. From the initial spatial arrangement to detailed cabinet configurations and realistic 3D visualisations, this collection provides a complete roadmap for creating a functional and beautiful kitchen space.',
-    image: '/project8.jpg',
+    image: '',
     tags: [
       'Kitchen Plan',
       'Bathroom plan',
@@ -59,7 +59,7 @@ const projects = [
     title: '3D Plans',
     description:
       'A collection of three-dimensional design plans for various room types, including brainstorming spaces, owner areas, and conference rooms. These plans provide a realistic visualization of the proposed designs and facilitate better communication between clients and designers.',
-    image: '/COILAB WORKSTATION 1 3D.jpg',
+    image: '/coilab-workstation-3d.jpg',
     tags: ['Brainstorming Room', 'Owner Room', 'Conference Room'],
     planCount: 3,
     files: [],
@@ -158,7 +158,9 @@ export default function Projects() {
                 <div
                   className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                   style={{
-                    backgroundImage: `url(${project.image})`,
+                    backgroundImage: project.image
+                      ? `url(${project.image})`
+                      : `linear-gradient(135deg, #3a2e1e 0%, #6b5035 40%, #a07850 100%)`,
                   }}
                 />
                 <div className="absolute inset-0 bg-[rgba(19,15,10,0.52)] opacity-0 group-hover:opacity-100 transition-elegant flex items-center justify-center gap-4">
