@@ -51,7 +51,7 @@ const projects = [
       'Plan and Elevation',
     ],
     planCount: 11,
-    files: [],
+    files: ['/KITCHEN FT.pdf'],
   },
   {
     id: '3d',
