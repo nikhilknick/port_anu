@@ -60,9 +60,16 @@ const projects = [
     description:
       'A collection of three-dimensional design plans for various room types, including brainstorming spaces, owner areas, and conference rooms. These plans provide a realistic visualization of the proposed designs and facilitate better communication between clients and designers.',
     image: '/coilab-workstation-3d.jpg',
-    tags: ['Brainstorming Room', 'Owner Room', 'Conference Room'],
-    planCount: 3,
-    files: [],
+    tags: ['Workstation', 'Conference Room', 'Owner Room', 'Living Room', 'TV Unit', 'Entrance'],
+    planCount: 6,
+    files: [
+      '/coilab-workstation-3d.jpg',
+      '/conference-room-3d.jpg',
+      '/owner-room-3d.jpg',
+      '/living-room-3d.jpg',
+      '/tv-unit-3d.jpg',
+      '/entrance-3d.jpg',
+    ],
   },
 ]
 
@@ -246,17 +253,27 @@ export default function Projects() {
                     {selectedProject.description}
                   </p>
 
-                  {/* Project Files/PDFs */}
+                  {/* Project Files/PDFs/Images */}
                   {selectedProject.files && selectedProject.files.length > 0 && (
                     <div className="mb-8">
-                      <h4 className="text-[0.72rem] tracking-[0.28em] uppercase text-gold mb-4">Project Files</h4>
+                      <h4 className="text-[0.72rem] tracking-[0.28em] uppercase text-gold mb-4">
+                        {selectedProject.files[0].endsWith('.pdf') ? 'Project Files' : '3D Visualizations'}
+                      </h4>
                       {selectedProject.files.map((file, index) => (
                         <div key={index} className="mb-6 rounded-lg overflow-hidden border border-[rgba(201,169,110,0.15)]">
-                          <iframe
-                            src={file}
-                            className="w-full h-[600px]"
-                            title={`Project file ${index + 1}`}
-                          />
+                          {file.endsWith('.pdf') ? (
+                            <iframe
+                              src={file}
+                              className="w-full h-[600px]"
+                              title={`Project file ${index + 1}`}
+                            />
+                          ) : (
+                            <img
+                              src={file}
+                              alt={`3D visualization ${index + 1}`}
+                              className="w-full h-auto object-contain bg-bg-dark"
+                            />
+                          )}
                         </div>
                       ))}
                     </div>
