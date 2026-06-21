@@ -29,7 +29,7 @@ const projects = [
     title: 'Hotel Plans',
     description:
       'The proposed hotel site plan is designed as a premium hospitality and event destination with efficient space planning and smooth circulation. The layout includes well-organized banquet lawns, hotel blocks, recreational amenities, landscaped open spaces, and dedicated parking areas.',
-    image: '',
+    image: '/hotel-layout-card.jpg',
     tags: ['Hotel Grid Plan', 'Hotel Layout Plan', 'Hotel Complete Plan'],
     planCount: 3,
     files: ['/HOTEL GRID.pdf', '/HOTEL LAYOUT PLAN.pdf', '/HOTEL COMPLETE PLAN.pdf'],
@@ -40,7 +40,7 @@ const projects = [
     title: 'Kitchen Plans',
     description:
       'A comprehensive kitchen design set covering layout, cabinetry, elevation, and 3D plans. From the initial spatial arrangement to detailed cabinet configurations and realistic 3D visualisations, this collection provides a complete roadmap for creating a functional and beautiful kitchen space.',
-    image: '',
+    image: '/kitchen-elevation-card.jpg',
     tags: [
       'Kitchen Plan',
       'Bathroom plan',
