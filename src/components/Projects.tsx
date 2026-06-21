@@ -11,7 +11,7 @@ const projects = [
     title: 'Office Plans',
     description:
       'A complete set of office plans — structural grid layout with solar & daylight analysis, plus a full architectural layout with workstations, meeting rooms, brainstorming zones, sleeping pods, and support facilities.',
-    image: '',
+    image: '/office-bubble-diagram.jpg',
     tags: ['Grid Plan', 'Architecture', 'Furniture', 'Ledger', 'Mood Board'],
     planCount: 6,
     files: [
