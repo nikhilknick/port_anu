@@ -30,9 +30,9 @@ const projects = [
     description:
       'The proposed hotel site plan is designed as a premium hospitality and event destination with efficient space planning and smooth circulation. The layout includes well-organized banquet lawns, hotel blocks, recreational amenities, landscaped open spaces, and dedicated parking areas.',
     image: '/project5.jpg',
-    tags: ['Hotel Grid Plan', 'Hotel Bubble Diagram', 'Hotel Furniture Plan'],
+    tags: ['Hotel Grid Plan', 'Hotel Layout Plan', 'Hotel Complete Plan'],
     planCount: 3,
-    files: [],
+    files: ['/HOTEL GRID.pdf', '/HOTEL LAYOUT PLAN.pdf', '/HOTEL COMPLETE PLAN.pdf'],
   },
   {
     id: 'kitchen',
