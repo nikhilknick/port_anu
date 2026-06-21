@@ -59,7 +59,7 @@ const projects = [
     title: '3D Plans',
     description:
       'A collection of three-dimensional design plans for various room types, including brainstorming spaces, owner areas, and conference rooms. These plans provide a realistic visualization of the proposed designs and facilitate better communication between clients and designers.',
-    image: '/project15.jpg',
+    image: '/COILAB WORKSTATION 1 3D.jpg',
     tags: ['Brainstorming Room', 'Owner Room', 'Conference Room'],
     planCount: 3,
     files: [],
@@ -158,7 +158,7 @@ export default function Projects() {
                 <div
                   className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                   style={{
-                    backgroundImage: `linear-gradient(135deg, #3a2e1e 0%, #6b5035 40%, #a07850 100%)`,
+                    backgroundImage: `url(${project.image})`,
                   }}
                 />
                 <div className="absolute inset-0 bg-[rgba(19,15,10,0.52)] opacity-0 group-hover:opacity-100 transition-elegant flex items-center justify-center gap-4">
